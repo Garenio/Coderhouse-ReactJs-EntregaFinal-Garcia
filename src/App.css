@@ -1,42 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  min-height: 100vh;
+  background-color: rgb(49, 49, 49);
+  background: linear-gradient(0deg, rgb(63, 63, 63) 0%, rgb(22, 22, 22) 100%);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+header {
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  background: rgb(228,138,252);
+  background: linear-gradient(90deg, rgba(238,135,249,1) 0%, rgba(79,54,176,1) 100%);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+nav .nav-brand {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  cursor: pointer;
+
 }
 
-.card {
-  padding: 2em;
+nav .nav-brand:hover {
+  color: white;
 }
 
-.read-the-docs {
-  color: #888;
+nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  padding: 1rem;
+  margin: 0 0.5rem;
+  color: black;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.603);
+  border-radius: 0.5rem;
+}
+
+nav img {
+  height: 30px;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
+.cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart span {
+  color: white;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content h1 {
+  color: white;
+  margin: 2rem 0;
 }
