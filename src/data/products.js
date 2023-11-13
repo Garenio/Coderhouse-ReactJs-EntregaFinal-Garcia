@@ -1,4 +1,4 @@
-[
+export const products = [
 	{
 		"name": "PC Gamer Inicial",
 		"id": 1,

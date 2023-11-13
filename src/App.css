@@ -29,14 +29,16 @@ nav {
   align-items: center;
 }
 
-nav .nav-brand {
+nav .nav-brand a {
   font-family: 'Orbitron', sans-serif;
   font-size: 2rem;
+  color: black;
   cursor: pointer;
+  text-decoration: none;
 
 }
 
-nav .nav-brand:hover {
+nav .nav-brand a:hover {
   color: white;
 }
 
@@ -53,6 +55,8 @@ nav ul li a {
   color: black;
   font-size: 1.1rem;
   font-weight: 500;
+  text-transform: capitalize;
+  cursor: pointer;
 }
 
 nav ul li a:hover {
