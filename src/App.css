@@ -158,3 +158,48 @@ nav img {
 .error-page h1 {
   color: white;
 }
+
+.item-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.item-detail h1 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.item-detail img {
+  width: 350px;
+  padding: 50px;
+  background-color: white;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+
+.item-detail p {
+  color: white;
+  font-size: 18px;
+}
+
+.item-detail a {
+  background: rgb(228,138,252);
+  background: linear-gradient(90deg, rgba(238,135,249,1) 0%, rgba(79,54,176,1) 100%);
+  text-decoration: none;
+  color: white;
+  padding: 15px;
+  width: 200px;
+  text-align: center;
+  margin: 20px 0;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.div-loading {
+  color: white;
+  font-size: 14px;
+  padding: 20px;
+}

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -15,17 +16,18 @@ export const ItemDetailContainer = () => {
       }, 2000);
     });
 
-    promise
-      .then((response) => {
-        const foundItem = response.find(
-          (item) => item.id == id
-        );
-        setItem(foundItem);
-      })
+    promise.then((response) => {
+      const foundItem = response.find((item) => item.id == id);
+      setItem(foundItem);
+    });
   }, [id]);
 
-  if(!item) {
-    return <>Cargando detalles...</>;
+  if (!item) {
+    return (
+      <div className="div-loading">
+        <h3>Cargando detalles...</h3>
+      </div>
+    );
   }
 
   return (
@@ -33,6 +35,7 @@ export const ItemDetailContainer = () => {
       <h1>{item.name}</h1>
       <img src={item.img} alt="Imagen del producto" />
       <p>{item.detail}</p>
+      <Link to={"/"}>Comprar Ahora</Link>
     </div>
   );
 };
