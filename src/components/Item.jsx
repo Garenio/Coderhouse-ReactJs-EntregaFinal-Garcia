@@ -6,7 +6,7 @@ export const Item = ({ item }) => {
             <img src={ item.img } alt="Imagen del producto"/>
             <h3>{ item.name }</h3>
             <p>{ item.detail }</p>
-            <a className="card-button" href=""><Link to={`/item/${item.id}`}>Detalle</Link></a>
+            <Link to={`/item/${item.id}`}>Detalle</Link>
         </div>
     );
 };

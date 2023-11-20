@@ -92,3 +92,69 @@ nav img {
   color: white;
   margin: 2rem 0;
 }
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: center;
+  width: 450px;
+  height: 500px;
+  background-color: white;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 30px;
+}
+
+.product-card img {
+  width: 300px;
+}
+
+.product-card h3 {
+  padding: 10px 0;
+  text-align: center;
+  max-width: 350px;
+}
+
+.product-card p {
+  text-align: center;
+  max-width: 400px;
+}
+
+.product-card a {
+  text-align: center;
+  padding: 15px 0;
+  background-color: rgb(79,54,176);
+  width: 100px;
+  margin: 20px 0;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.product-card a:hover {
+  background-color: rgb(238,135,249);
+  color: rgb(43, 43, 43);
+}
+
+.error-page {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-page h1 {
+  color: white;
+}

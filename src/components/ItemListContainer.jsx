@@ -5,44 +5,31 @@ import { products } from "../data/products";
 import { ItemList } from "./ItemList";
 
 export const ItemListContainer = () => {
-    const [items, setItems] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState([]);
 
-    const { id } = useParams();
+  const { id } = useParams();
 
-    useEffect( () => {
-        const promise = new Promise( (resolve, reject) => {
-            setTimeout( () => {
-                resolve(products);
-            }, 2000);   
-        });
+  useEffect(() => {
+    const promise = new Promise((resolve, reject) => {
+      resolve(products);
+    });
 
-        promise.then((response) => {
-            if(id) {
-                const filteredCategory = response.filter((item) => item.category === id);
-                setItems(filteredCategory);
-            } else {
-                setItems(response);
-            }
-        })
-        .finally(() => setLoading(false));
-    }, [id]);
-    return (
-        <>
-            <div className="content">
-                <h1>Lista:</h1>
-                <ItemList items={items} />
-            </div>
-        </>
-    );
+    promise.then((response) => {
+      if (id) {
+        const filteredCategory = response.filter(
+          (item) => item.category === id
+        );
+        setItems(filteredCategory);
+      } else {
+        setItems(response);
+      }
+    });
+  }, [id]);
+  return (
+    <div className="content">      
+      <div className="card-container">
+        <ItemList items={items} />
+      </div>
+    </div>
+  );
 };
-
-/* export const ItemListContainer = () => {
-    return (
-        <>
-            <div className="content">
-                <h1>Lista:</h1>
-            </div>
-        </>
-    );
-} */
