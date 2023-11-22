@@ -164,7 +164,7 @@ nav img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 20px;
 }
 
 .item-detail h1 {
@@ -173,7 +173,7 @@ nav img {
 }
 
 .item-detail img {
-  width: 350px;
+  width: 300px;
   padding: 50px;
   background-color: white;
   border-radius: 50px;
@@ -193,13 +193,36 @@ nav img {
   padding: 15px;
   width: 200px;
   text-align: center;
-  margin: 20px 0;
+  margin: 10px 0;
   border-radius: 20px;
   font-weight: bold;
+}
+
+.item-detail h5 {
+  color: rgba(237, 135, 249, 0.733);
 }
 
 .div-loading {
   color: white;
   font-size: 14px;
   padding: 20px;
+}
+
+.counter-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.699);
+  margin: 10px 0;
+  border-radius: 20px;
+}
+
+.counter-controls .counter-btn {
+  width: 20px;
+  height: 20px;
+  font-size: 18px;
+  border: none;
+  background-color: transparent;
 }
