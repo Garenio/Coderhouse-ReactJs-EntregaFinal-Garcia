@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -42,8 +41,7 @@ export const ItemDetailContainer = () => {
       <p>{item.detail}</p>
       <ItemCount initial={1} stock={item.stock} />
       <h5>Stock Actual: {item.stock}</h5>
-      <Link to={"/"}>Agregar al carrito</Link>
-      <button onClick={() => addItem()}>Agregar al carrito</button>
+      <button className="addCart" onClick={() => addItem()}>Agregar al carrito</button>
     </div>
   );
 };

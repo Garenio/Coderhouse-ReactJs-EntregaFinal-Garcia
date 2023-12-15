@@ -198,6 +198,22 @@ nav img {
   font-weight: bold;
 }
 
+.item-detail .addCart {
+  background: rgb(228,138,252);
+  background: linear-gradient(90deg, rgba(238,135,249,1) 0%, rgba(79,54,176,1) 100%);
+  text-decoration: none;
+  color: white;
+  padding: 15px;
+  width: 200px;
+  text-align: center;
+  margin: 10px 0;
+  border-radius: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
 .item-detail h5 {
   color: rgba(237, 135, 249, 0.733);
 }
