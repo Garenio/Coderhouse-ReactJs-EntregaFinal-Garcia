@@ -1,20 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
+import { useCart } from "../hooks/useCart";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cartList, setCartList] = useState([]);
+  const values = useCart();
 
-  const clear = () => setCartList([]);
-
-  const addItem = () => alert();
-  /* 
-  const addItem = (item) =>
-    setCartList((prev) => {
-      return [...prev, item];
-    }); */
-
-  return (
-    <CartContext.Provider value={{ clear, addItem, cartList }}>{children}</CartContext.Provider>
-  );
+  return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
 };
