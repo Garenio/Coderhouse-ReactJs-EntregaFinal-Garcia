@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { products } from "../data/products";
+import { CartContext } from "../contexts/CartContext";
 import { ItemCount } from "./ItemCount";
+
 
 export const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
 
   const { id } = useParams();
+
+  const { addItem } = useContext(CartContext);
 
   useEffect(() => {
     const promise = new Promise((resolve, reject) => {
@@ -38,7 +42,8 @@ export const ItemDetailContainer = () => {
       <p>{item.detail}</p>
       <ItemCount initial={1} stock={item.stock} />
       <h5>Stock Actual: {item.stock}</h5>
-      <Link to={"/"}>Comprar Ahora</Link>
+      <Link to={"/"}>Agregar al carrito</Link>
+      <button onClick={() => addItem()}>Agregar al carrito</button>
     </div>
   );
 };

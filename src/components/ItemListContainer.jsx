@@ -9,6 +9,7 @@ export const ItemListContainer = () => {
 
   const { id } = useParams();
 
+
   useEffect(() => {
     const promise = new Promise((resolve, reject) => {
       resolve(products);
@@ -26,7 +27,7 @@ export const ItemListContainer = () => {
     });
   }, [id]);
   return (
-    <div className="content">      
+    <div className="content">
       <div className="card-container">
         <ItemList items={items} />
       </div>
