@@ -2,12 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { CartWidget } from "./CartWidget";
-import { products } from "../data/products";
 
-const categories = products.map((item) => item.category);
-const uniqueCategories = new Set(categories);
+/* const categories = products.map((item) => item.category);
+const uniqueCategories = new Set(categories); */
 
-console.log(uniqueCategories);
 
 export const NavBar = () => {
   return (
@@ -19,13 +17,16 @@ export const NavBar = () => {
         <ul>
           <li>
             <Link to={"/"}>Inicio</Link>
-          </li>
+            <Link to={"/category/desktop"}>PC Escritorio</Link>
+            <Link to={"/category/notebooks"}>Notebooks</Link>
+            <Link to={"/category/components"}>Componentes</Link>
+{/*           </li>
           {[...uniqueCategories].map((item) => (
             <li key={item}>
               <Link to={`/category/${item}`}>{item}</Link>
             </li>
           ))}
-          <li>
+          <li> */}
             <Link to={"/contacto"}>Contacto</Link>
           </li>
         </ul>
