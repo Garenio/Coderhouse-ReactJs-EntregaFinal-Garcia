@@ -1,7 +1,7 @@
 =================================================================
 
-# PreEntrega2 - Eugenio Garcia
+# Entrega Final - Eugenio Garcia
 
-Esta es la Segunda PreEntrega realizada para el curso de ReactJs de Coderhouse.
+Esta es la Entrega Final realizada para el curso de ReactJs de Coderhouse.
 
 =================================================================
