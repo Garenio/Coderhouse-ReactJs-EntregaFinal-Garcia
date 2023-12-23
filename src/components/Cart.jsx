@@ -7,13 +7,11 @@ const clearBuyer = { name: "", phone: "", email: "" };
 
 export const Cart = () => {
   const [buyer, setBuyer] = useState(clearBuyer);
-  const { clear, cartList } = useContext(CartContext);
+  const { clear, cartList, removeItem } = useContext(CartContext);
 
   const total = cartList.reduce((accumulated, current) => {
     return accumulated + current.price * 5;
   }, 0);
-
-  console.log(total, cartList);
 
   const handleSendOrder = () => {
     const order = { buyer, cartList, total };
@@ -21,11 +19,16 @@ export const Cart = () => {
     const db = getFirestore();
     const orderCollection = collection(db, "orders");
 
-    addDoc(orderCollection, order).then(({ id }) => {
-      if (id) {
-        alert("Su orden: " + id + " ha sido completada!");
-      }
-    });
+    addDoc(orderCollection, order)
+      .then(({ id }) => {
+        if (id) {
+          alert("Su orden: " + id + " ha sido completada!");
+        }
+      })
+      .finally(() => {
+        setBuyer(clearBuyer);
+        clear();
+      });
   };
 
   const handleChange = (ev) => {
@@ -38,6 +41,14 @@ export const Cart = () => {
     });
   };
 
+  if (!cartList.length)
+    return (
+      <div>
+        <p>El carrito está vacio...</p>
+        <button>Ver los productos</button>
+      </div>
+    );
+
   return (
     <div className="cart-detail">
       <div className="cart-products-list">
@@ -47,6 +58,7 @@ export const Cart = () => {
             <h3>{item.name}</h3>
             <p>{item.detail}</p>
             <p>$ {item.price}</p>
+            <button onClick={() => removeItem(item.id)}>X</button>
           </div>
         ))}
       </div>
@@ -73,7 +85,7 @@ export const Cart = () => {
             value={buyer.email}
             onChange={handleChange}
             name="email"
-            placeholder="email"
+            placeholder="Email"
             required
           />
         </form>
