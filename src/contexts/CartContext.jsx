@@ -7,10 +7,29 @@ export const CartProvider = ({ children }) => {
 
   const clear = () => setCartList([]);
 
-  const addItem = (item) =>
-    setCartList((prev) => {
-      return [...prev, item];
-    });
+  const addItem = (item, quantity) => {
+    const exists = cartList.some((i) => i.id === item.id);
+
+    if (exists) {
+      const updateItem = cartList.map((i) => {
+        if (i.id === item.id) {
+          return {
+            ...i,
+            quantity: i.quantity + quantity,
+          };
+        } else {
+          return i;
+        }
+      });
+      setCartList(updateItem);
+    } else {
+      setCartList((prev) => {
+        return [...prev, { ...item, quantity }];
+      });
+    }
+  };
+
+  console.log(cartList);
 
   const removeItem = (id) => {
     const newCartList = cartList.filter((prev) => prev.id !== id);

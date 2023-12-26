@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
 
+import { ItemDetail } from "./ItemDetail";
 import { CartContext } from "../contexts/CartContext";
 import { ItemCount } from "./ItemCount";
 
@@ -18,16 +19,10 @@ export const ItemDetailContainer = () => {
 
     const refDoc = doc(db, "products", id);
 
-    getDoc(refDoc)
-      .then((snapshot) => {
-        setItem({ id: snapshot.id, ...snapshot.data() });
-      })
-      .finally(() => setLoading(false));
+    getDoc(refDoc).then((snapshot) => {
+      setItem({ id: snapshot.id, ...snapshot.data() });
+    }).finally(() => setLoading(false));
   }, [id]);
-
-  const onAdd = (quantity) => {
-    addItem(item, quantity);
-  };
 
   if (loading) {
     return (
@@ -42,8 +37,8 @@ export const ItemDetailContainer = () => {
       <h1>{item.name}</h1>
       <img src={item.img} alt="Imagen del producto" />
       <p>{item.detail}</p>
+      <ItemCount initial={1} stock={item.stock} />
       <h5>Stock Actual: {item.stock}</h5>
-      <ItemCount initial={1} stock={item.stock} addItem={onAdd} />
       <button className="addCart" onClick={() => addItem(item)}>
         Agregar al carrito
       </button>
