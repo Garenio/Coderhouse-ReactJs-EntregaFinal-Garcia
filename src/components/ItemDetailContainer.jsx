@@ -44,9 +44,6 @@ export const ItemDetailContainer = () => {
       <p>{item.detail}</p>
       <h5>Stock Actual: {item.stock}</h5>
       <ItemCount initial={1} stock={item.stock} addItem={onAdd} />
-      <button className="addCart" onClick={() => addItem(item)}>
-        Agregar al carrito
-      </button>
     </div>
   );
 };

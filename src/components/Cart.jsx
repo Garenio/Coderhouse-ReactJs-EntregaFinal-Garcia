@@ -94,7 +94,7 @@ export const Cart = () => {
       </div>
       <div className="cart-control">
         <h3>{total}</h3>
-        <button onClick={handleSendOrder}>Comprar</button>
+        <button type="button" onClick={handleSendOrder}>Comprar</button>
         <button onClick={clear}>Vaciar Carrito</button>
       </div>
     </div>
