@@ -9,9 +9,10 @@ export const Cart = () => {
   const [buyer, setBuyer] = useState(clearBuyer);
   const { clear, cartList, removeItem } = useContext(CartContext);
 
-  const total = cartList.reduce((accumulated, current) => {
-    return accumulated + current.price * 5;
-  }, 0);
+  const total = cartList.reduce(
+    (accumulated, current) => accumulated + current.price * current.quantity,
+    0
+  );
 
   const handleSendOrder = () => {
     const order = { buyer, cartList, total };
@@ -57,6 +58,7 @@ export const Cart = () => {
             <img src={item.img} alt="Imagen del producto" />
             <h3>{item.name}</h3>
             <p>{item.detail}</p>
+            <p>{item.quantity}</p>
             <p>$ {item.price}</p>
             <button onClick={() => removeItem(item.id)}>X</button>
           </div>
@@ -91,6 +93,7 @@ export const Cart = () => {
         </form>
       </div>
       <div className="cart-control">
+        <h3>{total}</h3>
         <button onClick={handleSendOrder}>Comprar</button>
         <button onClick={clear}>Vaciar Carrito</button>
       </div>
