@@ -1,17 +1,14 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
 
-import { CartContext } from "../contexts/CartContext";
-import { ItemCount } from "./ItemCount";
+import { ItemDetail } from "./ItemDetail";
 
 export const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const { id } = useParams();
-
-  const { addItem } = useContext(CartContext);
 
   useEffect(() => {
     const db = getFirestore();
@@ -25,10 +22,6 @@ export const ItemDetailContainer = () => {
       .finally(() => setLoading(false));
   }, [id]);
 
-  const onAdd = (quantity) => {
-    addItem(item, quantity);
-  };
-
   if (loading) {
     return (
       <div className="div-loading">
@@ -37,13 +30,5 @@ export const ItemDetailContainer = () => {
     );
   }
 
-  return (
-    <div className="item-detail">
-      <h1>{item.name}</h1>
-      <img src={item.img} alt="Imagen del producto" />
-      <p>{item.detail}</p>
-      <h5>Stock Actual: {item.stock}</h5>
-      <ItemCount initial={1} stock={item.stock} addItem={onAdd} />
-    </div>
-  );
+  return <ItemDetail {...item} />;
 };

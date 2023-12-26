@@ -1,21 +1,22 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 import { CartContext } from "../contexts/CartContext";
 import { ItemCount } from "./ItemCount";
 
-export const ItemDetail = ({ id }) => {
+export const ItemDetail = ({ id, name, img, detail, stock, price }) => {
   const { addItem } = useContext(CartContext);
+
+  const onAdd = (quantity) => {
+    addItem({id, name, img, detail, stock, price}, quantity);
+  };
 
   return (
     <div className="item-detail">
-      <h1>{item.name}</h1>
-      <img src={item.img} alt="Imagen del producto" />
-      <p>{item.detail}</p>
-      <ItemCount initial={1} stock={item.stock} />
-      <h5>Stock Actual: {item.stock}</h5>
-      <button className="addCart" onClick={() => addItem(item)}>
-        Agregar al carrito
-      </button>
+      <h1>{name}</h1>
+      <img src={img} alt="Imagen del producto" />
+      <p>{detail}</p>
+      <h5>Stock Actual: {stock}</h5>
+      <ItemCount initial={1} stock={stock} addItem={onAdd} />
     </div>
   );
 };
