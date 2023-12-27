@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
 
+import { Loader } from "./Loader";
 import { ItemDetail } from "./ItemDetail";
 
 export const ItemDetailContainer = () => {
@@ -23,11 +24,7 @@ export const ItemDetailContainer = () => {
   }, [id]);
 
   if (loading) {
-    return (
-      <div className="div-loading">
-        <h3>Cargando detalles del producto...</h3>
-      </div>
-    );
+    return <Loader />;
   }
 
   return <ItemDetail {...item} />;

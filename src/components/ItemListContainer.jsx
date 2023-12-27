@@ -8,6 +8,7 @@ import {
   where,
 } from "firebase/firestore";
 
+import { Loader } from "./Loader";
 import { ItemList } from "./ItemList";
 
 export const ItemListContainer = () => {
@@ -23,23 +24,21 @@ export const ItemListContainer = () => {
       ? query(collection(db, "products"), where("category", "==", id))
       : collection(db, "products");
 
-    getDocs(refCollection).then((snapshot) => {
-      if (snapshot.size === 0) console.log("no results");
-      else
-        setItems(
-          snapshot.docs.map((doc) => {
-            return { id: doc.id, ...doc.data() };
-          })
-        );
-    }).finally(() => setLoading(false));;
+    getDocs(refCollection)
+      .then((snapshot) => {
+        if (snapshot.size === 0) console.log("no results");
+        else
+          setItems(
+            snapshot.docs.map((doc) => {
+              return { id: doc.id, ...doc.data() };
+            })
+          );
+      })
+      .finally(() => setLoading(false));
   }, [id]);
 
   if (loading) {
-    return (
-      <div className="div-loading">
-        <h3>Cargando productos...</h3>
-      </div>
-    );
+    return <Loader />;
   }
 
   return (

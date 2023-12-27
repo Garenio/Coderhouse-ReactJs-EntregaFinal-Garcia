@@ -309,6 +309,19 @@ nav img {
   background:rgb(12, 12, 12);
 }
 
+.btn-secondary {
+  background: rgb(209, 209, 209);
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding: 5px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+}
+
 .btn-clear-cart {
   background-color: crimson;
   border: none;
@@ -330,4 +343,110 @@ nav img {
 .empty-cart h1 {
   color: white;
   padding: 10px 0;
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout-products-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  margin: 0 0 15px 0;
+}
+
+.checkout-product-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 800px;
+  padding: 10px 10px;
+}
+
+.checkout-product-card h5{
+  width: 600px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.checkout h2 {
+  color: white;
+  padding: 15px 0;
+}
+
+.checkout h3 {
+  color: white;
+}
+
+.buyer-form {
+  padding: 20px 0 0 0;
+}
+
+.buyer-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buyer-form form input {
+  width: 500px;
+  height: 25px;
+  padding: 5px 0 5px 10px;
+  margin: 5px 0;
+  border-radius: 15px;
+  border: none;
+  background-color: rgb(232, 172, 248);
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  text-align: center;
+}
+
+.loader-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.custom-loader {
+  width:50px;
+  height:12px;
+  background: radial-gradient(circle closest-side,#E884F6 90%,#0000) 0 0/33% 100% space;
+  clip-path: inset(0 100% 0 0);
+  animation:d1 1s steps(4) infinite;
+}
+@keyframes d1 {to{clip-path: inset(0 -34% 0 0)}}
+
+.successful-order {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.successful-order h1 {
+  color: white;
+  padding: 10px 0;
+}
+
+.successful-order h3 {
+  color: white;
+  font-weight: lighter;
+}
+
+.successful-order span {
+  color: #E884F6;
+  padding: 10px 0;
+  font-weight: bold;
 }

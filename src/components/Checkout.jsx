@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 
+import { Loader } from "./Loader";
 import { CartContext } from "../contexts/CartContext";
 
 const clearBuyer = { name: "", phone: "", email: "" };
@@ -52,58 +53,71 @@ export const Checkout = () => {
   };
 
   if (loading) {
-    return <h1>Se está generando la compra...</h1>;
+    return <Loader />;
   }
 
   if (orderId) {
-    return <h1>Gracias por su compra. El número de orden es: {orderId}</h1>;
+    return (
+      <div className="successful-order">
+        <h1>¡Gracias por su compra!</h1>
+        <h3>Su número de orden es: <span>{orderId}</span></h3>;
+        <Link className="btn-primary" to={"/"}>Ir al inicio</Link>
+      </div>
+    );
   }
 
   return (
-    <div className="checkout">
-      <div className="checkout-products-list">
-        {cartList.map((item) => (
-          <div key={item.id} className="product-card">
-            <h3>{item.name} x {item.quantity} un.</h3>
-            <p>$ {item.price} por unidad</p>
-          </div>
-        ))}
-      </div>
-      <div className="buyer-form">
-        <form>
-          <input
-            type="text"
-            value={buyer.name}
-            onChange={handleChange}
-            name="name"
-            placeholder="Nombre"
-            required
-          />
-          <input
-            type="text"
-            value={buyer.phone}
-            onChange={handleChange}
-            name="phone"
-            placeholder="Teléfono"
-            required
-          />
-          <input
-            type="email"
-            value={buyer.email}
-            onChange={handleChange}
-            name="email"
-            placeholder="Email"
-            required
-          />
-        </form>
+    <>
+      <div className="checkout">
+        <h2>Resumen de la compra:</h2>
+        <div className="checkout-products-list">
+          {cartList.map((item) => (
+            <div key={item.id} className="checkout-product-card">
+              <h5>
+                {item.name} x {item.quantity} un.
+              </h5>
+              <p>$ {item.price} c/u</p>
+            </div>
+          ))}
+        </div>
+        <h3>Total a pagar: ${total}</h3>
+        <div className="buyer-form">
+          <form>
+            <input
+              type="text"
+              value={buyer.name}
+              onChange={handleChange}
+              name="name"
+              placeholder="Nombre"
+              required
+            />
+            <input
+              type="text"
+              value={buyer.phone}
+              onChange={handleChange}
+              name="phone"
+              placeholder="Teléfono"
+              required
+            />
+            <input
+              type="email"
+              value={buyer.email}
+              onChange={handleChange}
+              name="email"
+              placeholder="Email"
+              required
+            />
+          </form>
+        </div>
       </div>
       <div className="cart-control">
-        <h3>{total}</h3>
-        <button type="button" onClick={handleSendOrder}>
+        <button className="btn-primary" type="button" onClick={handleSendOrder}>
           Finalizar
         </button>
-        <Link to={"/cart"}>Volver al carrito</Link>
+        <Link className="btn-secondary" to={"/cart"}>
+          Volver al carrito
+        </Link>
       </div>
-    </div>
+    </>
   );
 };
