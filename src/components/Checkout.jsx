@@ -61,6 +61,14 @@ export const Checkout = () => {
 
   return (
     <div className="checkout">
+      <div className="checkout-products-list">
+        {cartList.map((item) => (
+          <div key={item.id} className="product-card">
+            <h3>{item.name} x {item.quantity} un.</h3>
+            <p>$ {item.price} por unidad</p>
+          </div>
+        ))}
+      </div>
       <div className="buyer-form">
         <form>
           <input

@@ -8,7 +8,8 @@ export const ItemList = ({ items }) => {
           <img src={item.img} alt="Imagen del producto" />
           <h3>{item.name}</h3>
           <p>{item.detail}</p>
-          <Link to={`/item/${item.id}`}>Detalle</Link>
+          <h3>Precio: ${item.price} </h3>
+          <Link className="btn-primary" to={`/item/${item.id}`}>Detalle</Link>
         </div>
       ))}
     </>
